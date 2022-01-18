@@ -27,7 +27,6 @@ const renderMovieElement = (filter = "") => {
   filtermovieElement.forEach((movie) => {
     const movieLi = document.createElement("li");
     const { info, ...otherkeys } = movie;
-    console.log(otherkeys);
     let editedtext = movie.getFormattedTitle() + " - ";
     for (const otherKeys in info) {
       if (otherKeys !== "title") {
@@ -65,7 +64,6 @@ const addMovieHandler = () => {
   };
   movies.push(movie);
   renderMovieElement();
-  console.log(movies);
 };
 
 addMovieBtn.addEventListener("click", addMovieHandler);
