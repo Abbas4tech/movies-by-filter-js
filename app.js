@@ -22,7 +22,7 @@ const renderMovieElement = (filter = "") => {
 
   const filtermovieElement = !filter
     ? movies
-    : movies.filter((movie) => movie.info.title.includes(filter));
+    : movies.filter((movie) => movie.info.title.includes(filter.toLowerCase()));
 
   filtermovieElement.forEach((movie) => {
     const movieLi = document.createElement("li");
@@ -39,7 +39,7 @@ const renderMovieElement = (filter = "") => {
 };
 
 const addMovieHandler = () => {
-  const title = document.getElementById("title").value;
+  const title = document.getElementById("title").value.toLowerCase();
   const extraNameValue = document.getElementById("extra-name").value;
   const extraInfoValue = document.getElementById("extra-value").value;
 
