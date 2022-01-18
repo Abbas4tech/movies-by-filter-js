@@ -25,7 +25,7 @@ const renderMovieElement = (filter = "") => {
     : movies.filter((movie) => movie.info.title.includes(filter.toLowerCase()));
 
   filtermovieElement.forEach((movie) => {
-    const movieLi = document.createElement("li");
+    const movieListItem = document.createElement("li");
     const { info, ...otherkeys } = movie;
     let editedtext = movie.getFormattedTitle() + " - ";
     for (const otherKeys in info) {
@@ -33,8 +33,8 @@ const renderMovieElement = (filter = "") => {
         editedtext += `${otherKeys} : ${info[otherKeys]}`;
       }
     }
-    movieLi.textContent = editedtext;
-    movieList.append(movieLi);
+    movieListItem.textContent = editedtext;
+    movieList.append(movieListItem);
   });
 };
 
