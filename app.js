@@ -14,17 +14,18 @@ const renderMovieElement = (filter = "") => {
   if (movies.length === 0) {
     movieList.classList.remove("visible");
     return;
-  } else {
-    movieList.classList.add("visible");
   }
+  movieList.classList.add("visible");
 
   movieList.innerHTML = "";
 
-  const filtermovieElement = !filter
+  const filterMovieElement = !filter
     ? movies
-    : movies.filter((movie) => movie.info.title.includes(filter.toLowerCase()));
+    : movies.filter(({ info: { title } }) =>
+        title.includes(filter.trim().toLowerCase())
+      );
 
-  filtermovieElement.forEach((movie) => {
+  filterMovieElement.forEach((movie) => {
     const movieListItem = document.createElement("li");
     const { info, ...otherkeys } = movie;
     let editedtext = movie.getFormattedTitle() + " - ";
