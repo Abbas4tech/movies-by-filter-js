@@ -3,7 +3,7 @@ const searchBtn = document.getElementById("search-btn");
 
 const movies = [];
 
-const filtermovieHandler = () => {
+const filterMovieHandler = () => {
   const filteredElement = document.getElementById("filter-title").value;
   renderMovieElement(filteredElement);
 };
@@ -28,12 +28,10 @@ const renderMovieElement = (filter = "") => {
     const movieLi = document.createElement("li");
     const { info, ...otherkeys } = movie;
     console.log(otherkeys);
-    // const { title: movieTitle } = info;
-    // const { getFormattedTitle } = movie;
     let editedtext = movie.getFormattedTitle() + " - ";
     for (const otherKeys in info) {
       if (otherKeys !== "title") {
-        editedtext = editedtext + `${otherKeys} : ${info[otherKeys]}`;
+        editedtext += `${otherKeys} : ${info[otherKeys]}`;
       }
     }
     movieLi.textContent = editedtext;
@@ -71,4 +69,4 @@ const addMovieHandler = () => {
 };
 
 addMovieBtn.addEventListener("click", addMovieHandler);
-searchBtn.addEventListener("click", filtermovieHandler);
+searchBtn.addEventListener("click", filterMovieHandler);
